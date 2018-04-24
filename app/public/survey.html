@@ -15,6 +15,34 @@
         <div class="row">
             <h1>Friend Finder Survey</h1>
         </div>
+        <div class="modal-body" id="friendModal">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4"><img id='friendPic' src='' alt='friend pic'></div>
+                    <div class="col-md-4 ml-auto" id='friendName'></div>
+                </div>
+                <!-- <div class="row">
+                            <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
+                            <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                              Level 1: .col-sm-9
+                              <div class="row">
+                                <div class="col-8 col-sm-6">
+                                  Level 2: .col-8 .col-sm-6
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                  Level 2: .col-4 .col-sm-6
+                                </div>
+                              </div>
+                            </div>
+                          </div> -->
+            </div>
+        </div>
         <div class="row">
             <form >
                 <div class="form-group">
@@ -162,6 +190,7 @@
         crossorigin="anonymous"></script>
 
     <script>
+        $('#friendModal').hide();
         $("#addFriend").on("click", function(e){
             console.log("submit clicked");
             e.preventDefault();
@@ -186,7 +215,9 @@
                 if(data)
                 {
                     //display modal with friend info
-                    
+                    $('#friendName').html(data.name);
+                    $('#friendPic').attr('src',data.image);
+                    $('#friendModal').show();
                     console.log("match found:" + data);
                     console.log("friend was added successfully");
                 }
