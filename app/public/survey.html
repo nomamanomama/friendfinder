@@ -344,7 +344,7 @@
 
     <script>
         $("#addFriend").on("click", function(e){
-            console.log("submit clicked");
+            //console.log("submit clicked");
             e.preventDefault();
             var name = $("#name").val().trim();
             var image = $("#image").val().trim();
@@ -362,10 +362,10 @@
                     var array =[];
                     for (i = 1; i <= 10; i++){
                         var score = $('input[name="q'+i+'"]:checked').val();
-                        console.log(i + " val: " + score)
+                        //console.log(i + " val: " + score)
                         if(score === undefined){
                             allAnswered = false;
-                            console.log('answer missing');
+                            //console.log('answer missing');
                             return array;
                         }
                         array.push(score);
@@ -373,13 +373,13 @@
                     return array;
                 }
             }
-            console.log("# of answers: " + friend.scores().length);
+            //console.log("# of answers: " + friend.scores().length);
             if(friend.scores().length < 10){
                 $("#messageModalBody").text("Please answer all questions for the best match.");
                 $("#messageModal").modal('show');
                 return;
             } else {
-                console.log("all answered");
+                //console.log("all answered");
 
                 var currentURL = window.location.origin;
                 $.post(currentURL+"/api/friends", friend,function(data) {
@@ -389,8 +389,8 @@
                         $('#friendName').html(data.name);
                         $('#friendPic').attr('src',data.image);
                         $('#friendModal').modal('show');
-                        console.log("match found:" + data);
-                        console.log("friend was added successfully");
+                        //console.log("match found:" + data);
+                        //console.log("friend was added successfully");
                     }
                     $("#name").val("");
                     $("#image").val("");
