@@ -5,179 +5,332 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Philosopher|Poiret+One|Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <title>FriendFinder Survey</title>
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <h1>Friend Finder Survey</h1>
+            <h1> Friend Finder <i class="fas fa-child"></i>  Survey</h1>
         </div>
-        <div class="modal-body" id="friendModal">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4"><img id='friendPic' src='' alt='friend pic'></div>
-                    <div class="col-md-4 ml-auto" id='friendName'></div>
+ 
+        <!-- Message Modal -->
+        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="messageModalTitle">Uh Oh!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="messageModalBody">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <!-- <div class="row">
-                            <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
-                            <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
-                          </div>
-                          <div class="row">
-                            <div class="col-sm-9">
-                              Level 1: .col-sm-9
-                              <div class="row">
-                                <div class="col-8 col-sm-6">
-                                  Level 2: .col-8 .col-sm-6
+            </div>
+        </div>
+        <!-- Friend Modal -->
+        <div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="friendModalTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="friendModalTitle">Meet your new Friend!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="friendModalBody">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img id='friendPic' src='' alt='friend pic'>
                                 </div>
-                                <div class="col-4 col-sm-6">
-                                  Level 2: .col-4 .col-sm-6
-                                </div>
-                              </div>
+                                <div class="col-md-4 ml-auto" id='friendName'></div>
                             </div>
-                          </div> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <form >
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Name</label>
+                <!-- Name and Picture Info -->
+                <div class="input-group" >
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="nameLabel">Name*</span>
+                    </div>
                     <input type="input" class="form-control" id="name">
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Picture</label>
-                    <input type="input" class="form-control" id="image" placeholder="url to picture">
+                <div class="input-group" required="true">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="picLabel">Picture*</span>
+                    </div>
+                    <input type="input" class="form-control" id="image" placeholder="url to picture" >
                 </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 1</h2></label>
-                    <p>You like dogs more than cats?</p>
-                    <select class="form-control" id="q1">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 2</h2></label>
-                    <p>You prefer spontanaeity more than planning.</p>
-                    <select class="form-control" id="q2">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 3</h2></label>
-                    <p>You would rather snuggle up with a good book or movie than go to a crowded party.</p>
-                    <select class="form-control" id="q3">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
+                <div class="footnote"><i>*Required fields</i></div>
+                <!-- Questions -->
+                <div class="form-group" >
+                    <!-- <label for="q1"><h3>Question 1</h3></label> -->
+                    <p id='q1'>You like dogs more than cats?</p>
+                    <ul class="nav form-check">
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q1" id="q1-1" value="1">
+                            <label class="form-check-label" for="q1-1">1 Strongly Agree</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q1" id="q1-2" value="2">
+                            <label class="form-check-label" for="q1-2">2</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q1" id="q1-3" value="3">
+                            <label class="form-check-label" for="q1-3">3</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q1" id="q1-4" value="4">
+                            <label class="form-check-label" for="q1-4">4</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q1" id="q1-5" value="5">
+                            <label class="form-check-label" for="q1-5">5 Strongly Disagree</label>
+                        </li>
+                    </ul>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 4</h2></label>
-                    <p>You are adventurous and prefer to try new things.</p>
-                    <select class="form-control" id="q4">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
+                    <!-- <label for="q2"><h3>Question 2</h3></label> -->
+                    <p id="q2">You prefer spontanaeity more than planning.</p>
+                    <ul class="nav form-check">
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q2" id="q2-1" value="1">
+                            <label class="form-check-label" for="q2-1">1 Strongly Agree</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q2" id="q2-2" value="2">
+                            <label class="form-check-label" for="q2-2">2</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q2" id="q2-3" value="3">
+                            <label class="form-check-label" for="q2-3">3</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q2" id="q2-4" value="4">
+                            <label class="form-check-label" for="q2-4">4</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q2" id="q2-5" value="5">
+                            <label class="form-check-label" for="q2-5">5 Strongly Disagree</label>
+                        </li>
+                    </ul>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 5</h2></label>
-                    <p>You keep your home and workspace neatly organized.</p>
-                    <select class="form-control" id="q5">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
+                    <!-- <label for="q3"><h3>Question 3</h3></label> -->
+                    <p id-'q3'>You would rather snuggle up with a good book or movie than go to a crowded party.</p>
+                    <ul class="nav form-check">
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q3" id="q3-1" value="1">
+                            <label class="form-check-label" for="q3-1">1 Strongly Agree</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q3" id="q3-2" value="2">
+                            <label class="form-check-label" for="q3-2">2</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q3" id="q3-3" value="3">
+                            <label class="form-check-label" for="q3-3">3</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q3" id="q3-4" value="4">
+                            <label class="form-check-label" for="q3-4">4</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q3" id="q3-5" value="5">
+                            <label class="form-check-label" for="q3-5">5 Strongly Disagree</label>
+                        </li>
+                    </ul>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 6</h2></label>
-                    <p>You enjoy the process of learning and would go to school forever if you could.</p>
-                    <select class="form-control" id="q6">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
+                    <!-- <label for="q4"><h3>Question 4</h3></label> -->
+                    <p id-'q4'>You are adventurous and prefer to try new things.</p>
+                    <ul class="nav form-check">
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q4" id="q4-1" value="1">
+                            <label class="form-check-label" for="q4-1">1 Strongly Agree</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q4" id="q4-2" value="2">
+                            <label class="form-check-label" for="q4-2">2</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q4" id="q4-3" value="3">
+                            <label class="form-check-label" for="q4-3">3</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q4" id="q4-4" value="4">
+                            <label class="form-check-label" for="q4-4">4</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q4" id="q4-5" value="5">
+                            <label class="form-check-label" for="q4-5">5 Strongly Disagree</label>
+                        </li>
+                    </ul>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 7</h2></label>
+                    <!-- <label for="q5"><h3>Question 5</h3></label> -->
+                    <p id='q5'>You keep your home and workspace neatly organized.</p>
+                    <ul class="nav form-check">
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q5" id="q5-1" value="1">
+                            <label class="form-check-label" for="q5-1">1 Strongly Agree</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q5" id="q5-2" value="2">
+                            <label class="form-check-label" for="q5-2">2</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q5" id="q5-3" value="3">
+                            <label class="form-check-label" for="q5-3">3</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q5" id="q5-4" value="4">
+                            <label class="form-check-label" for="q5-4">4</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q5" id="q5-5" value="5">
+                            <label class="form-check-label" for="q5-5">5 Strongly Disagree</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="q6"><h3>Question 6</h3></label> -->
+                    <p id='q6'>You enjoy the process of learning and would go to school forever if you could.</p>
+                    <ul class="nav form-check">
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q6" id="q6-1" value="1">
+                            <label class="form-check-label" for="q6-1">1 Strongly Agree</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q6" id="q6-2" value="2">
+                            <label class="form-check-label" for="q6-2">2</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q6" id="q6-3" value="3">
+                            <label class="form-check-label" for="q6-3">3</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q6" id="q6-4" value="4">
+                            <label class="form-check-label" for="q6-4">4</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q6" id="q6-5" value="5">
+                            <label class="form-check-label" for="q6-5">5 Strongly Disagree</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="q7"><h3>Question 7</h3></label> -->
                     <p>You speak your mind openly.</p>
-                    <select class="form-control" id="q7">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
+                    <ul class="nav form-check">
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q7" id="q7-1" value="1">
+                            <label class="form-check-label" for="q7-1">1 Strongly Agree</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q7" id="q7-2" value="2">
+                            <label class="form-check-label" for="q7-2">2</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q7" id="q7-3" value="3">
+                            <label class="form-check-label" for="q7-3">3</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q7" id="q7-4" value="4">
+                            <label class="form-check-label" for="q7-4">4</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q7" id="q7-5" value="5">
+                            <label class="form-check-label" for="q7-5">5 Strongly Disagree</label>
+                        </li>
+                    </ul>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 8</h2></label>
-                    <p>You find conversation with strangers easy and comfortable.</p>
-                    <select class="form-control" id="q8">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
-                </div><div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 9</h2></label>
-                    <p>You are a chronic procrastinator.</p>
-                    <select class="form-control" id="q9">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
+                    <!-- <label for="q8"><h3>Question 8</h3></label> -->
+                    <p id='q8'>You find conversation with strangers easy and comfortable.</p>
+                    <ul class="nav form-check">
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q8" id="q8-1" value="1">
+                            <label class="form-check-label" for="q8-1">1 Strongly Agree</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q8" id="q8-2" value="2">
+                            <label class="form-check-label" for="q8-2">2</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q8" id="q8-3" value="3">
+                            <label class="form-check-label" for="q8-3">3</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q8" id="q8-4" value="4">
+                            <label class="form-check-label" for="q8-4">4</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q8" id="q8-5" value="5">
+                            <label class="form-check-label" for="q8-5">5 Strongly Disagree</label>
+                        </li>
+                    </ul>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h2>Question 10</h2></label>
-                    <p>You are distracted easily when you being a task.</p>
-                    <select class="form-control" id="q10">
-                        <option></option>
-                        <option>1 - Strongly Agree</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 - Strongly Disagree</option>
-                    </select>
+                    <!-- <label for="q9"><h3>Question 9</h3></label> -->
+                    <p id='q9'>You are a chronic procrastinator.</p>
+                    <ul class="nav form-check">
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q9" id="q9-1" value="1">
+                            <label class="form-check-label" for="q9-1">1 Strongly Agree</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q9" id="q9-2" value="2">
+                            <label class="form-check-label" for="q9-2">2</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q9" id="q9-3" value="3">
+                            <label class="form-check-label" for="q9-3">3</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q9" id="q9-4" value="4">
+                            <label class="form-check-label" for="q9-4">4</label>
+                        </li>
+                        <li class="nav-item col-2">
+                            <input class="form-check-input" type="radio" name="q9" id="q9-5" value="5">
+                            <label class="form-check-label" for="q9-5">5 Strongly Disagree</label>
+                        </li>
+                    </ul>
                 </div>
-
+                <div class="form-group">
+                    <!-- <label for="exampleFormControlSelect1"><h3>Question 10</h3></label> -->
+                    <p>You are distracted easily once you begin a task.</p>
+                    <ul id='q10'class="nav form-check">
+                        <li class="nav-item col-2"><input class="form-check-input" type="radio" name="q10" id="q10-1" value="1"><label class="form-check-label" for="q10-1">1 Strongly Agree</label></li>
+                        <li class="nav-item col-2"><input class="form-check-input" type="radio" name="q10" id="q10-2" value="2"><label class="form-check-label" for="q10-2">2</label></li>
+                        <li class="nav-item col-2"><input class="form-check-input" type="radio" name="q10" id="q10-3" value="3"><label class="form-check-label" for="q10-3">3</label></li>
+                        <li class="nav-item col-2"><input class="form-check-input" type="radio" name="q10" id="q10-4" value="4"><label class="form-check-label" for="q10-4">4</label></li>
+                        <li class="nav-item col-2"><input class="form-check-input" type="radio" name="q10" id="q10-5" value="5"><label class="form-check-label" for="q10-5">5 Strongly Disagree</label></li>
+                    </ul>
+                </div>
             </form>
         </div>
         <div class="row">
-            <button type="button" class="btn btn-primary btn-lg" id="addFriend">Submit</button>
+            <button type="button" class="btn btn-lg" id="addFriend">Find a Friend </button>
         </div>
     </div>
 
@@ -190,46 +343,70 @@
         crossorigin="anonymous"></script>
 
     <script>
-        $('#friendModal').hide();
         $("#addFriend").on("click", function(e){
             console.log("submit clicked");
             e.preventDefault();
+            var name = $("#name").val().trim();
+            var image = $("#image").val().trim();
+            if(name === '' || image === ''){
+                $("#messageModalBody").text("Please enter all required fields.");
+                $("#messageModal").modal('show');
+                return;
+            }
+            var allAnswered = true;
             var friend = {
                 name: $("#name").val().trim(),
                 image: $("#image").val().trim(),
                 scores: function(){
+
                     var array =[];
                     for (i = 1; i <= 10; i++){
-                        var score = $("#q" + i).val().trim();
-                        if(score.indexOf("1") != -1)
-                            score = 1;
-                        else if(score.indexOf("5") != -1)
-                            score = 5;
+                        var score = $('input[name="q'+i+'"]:checked').val();
+                        console.log(i + " val: " + score)
+                        if(score === undefined){
+                            allAnswered = false;
+                            console.log('answer missing');
+                            return array;
+                        }
                         array.push(score);
                     }
                     return array;
                 }
             }
-            var currentURL = window.location.origin;
-            $.post(currentURL+"/api/friends", friend,function(data) {
-                if(data)
-                {
-                    //display modal with friend info
-                    $('#friendName').html(data.name);
-                    $('#friendPic').attr('src',data.image);
-                    $('#friendModal').show();
-                    console.log("match found:" + data);
-                    console.log("friend was added successfully");
-                }
-                $("#name").val("");
-                $("#image").val("");
-                for (i = 1; i <= 10; i++) {
-                    var score = $("#q" + i).val("");
-                }
-            } );
+            console.log("# of answers: " + friend.scores().length);
+            if(friend.scores().length < 10){
+                $("#messageModalBody").text("Please answer all questions for the best match.");
+                $("#messageModal").modal('show');
+                return;
+            } else {
+                console.log("all answered");
 
+                var currentURL = window.location.origin;
+                $.post(currentURL+"/api/friends", friend,function(data) {
+                    if(data)
+                    {
+                        //display modal with friend info
+                        $('#friendName').html(data.name);
+                        $('#friendPic').attr('src',data.image);
+                        $('#friendModal').modal('show');
+                        console.log("match found:" + data);
+                        console.log("friend was added successfully");
+                    }
+                    $("#name").val("");
+                    $("#image").val("");
+                    for (i = 1; i <= 10; i++) {
+                        var score = $('input[name="q' + i + '"]:checked').val("");
+                    }
+                } );
+            }
         });
     </script>    
 </body>
-
+<footer>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="/"><i class="fas fa-home"></i></a>
+        <a class="navbar-brand" href="/api/friends">API Friend List</a>
+        <a class="navbar-brand" href="https://github.com/nomamanomama/friendfinder">GitHub Repo</a>
+    </nav>
+</footer>
 </html>

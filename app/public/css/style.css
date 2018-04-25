@@ -1,0 +1,81 @@
+
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    height: 100%;
+}
+
+.container {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+h1 {
+    margin: 50px 0px 30px 0px;
+    font-family: 'Anton', sans-serif;
+}
+
+h3 {
+    font-family: 'Philosopher', sans-serif;
+    font-size: 20px;
+}
+
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+p {
+    font-family: 'Poiret One', cursive;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+    font-size: 18px;
+}
+
+.footnote {
+    font-family: 'Poiret One', cursive;
+    margin-top: -1rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: gray;
+}
+
+#friendPic {
+    width: 100%;
+}
+
+#friendName {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+}
+
+.btn {
+    margin-top: 20px;
+    margin-bottom: 70px;
+    background-color: #218d7f;
+    color: white;
+}
+
+.welcome {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-top: 10px;
+    background-color: #6ca19a;
+    padding: 10px;
+}
+
+li {
+    margin-left: 5px;
+}
+.welcome-box{
+    height: 800px;
+}
+footer {
+    height:50px;
+}
